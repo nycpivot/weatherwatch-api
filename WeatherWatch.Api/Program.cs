@@ -8,14 +8,14 @@ using WeatherWatch.Api.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var serviceBindings = Environment.GetEnvironmentVariable("SERVICE_BINDING_ROOT") ?? String.Empty;
+//var serviceBindings = Environment.GetEnvironmentVariable("SERVICE_BINDING_ROOT") ?? String.Empty;
 
-var weatherDbApi = Environment.GetEnvironmentVariable("WEATHER_DB_API") ?? String.Empty;
+//var weatherDbApi = Environment.GetEnvironmentVariable("WEATHER_DB_API") ?? String.Empty;
 
-var weatherBitUrl = System.IO.File.ReadAllText(Path.Combine(serviceBindings, "weather-bit-api-resource-claim", "host"));
-var weatherBitKey = System.IO.File.ReadAllText(Path.Combine(serviceBindings, "weather-bit-api-resource-claim", "key"));
-var wavefrontUrl = System.IO.File.ReadAllText(Path.Combine(serviceBindings, "wavefront-api-resource-claim", "host"));
-var wavefrontToken = System.IO.File.ReadAllText(Path.Combine(serviceBindings, "wavefront-api-resource-claim", "token"));
+var weatherBitUrl = Environment.GetEnvironmentVariable("weather-bit-api-url");
+var weatherBitKey = Environment.GetEnvironmentVariable("weather-bit-api-key");
+//var wavefrontUrl = System.IO.File.ReadAllText(Path.Combine(serviceBindings, "wavefront-api-resource-claim", "host"));
+//var wavefrontToken = System.IO.File.ReadAllText(Path.Combine(serviceBindings, "wavefront-api-resource-claim", "token"));
 
 // setup weather bit service
 var weatherBitService = new WeatherBitService()
@@ -31,7 +31,7 @@ builder.Services.AddSingleton<IWeatherBitService>(weatherBitService);
 //builder.Services.AddSingleton<IWavefrontSender>(wfSender);
 
 // setup weather data service
-var weatherDataService = new WeatherDataService() { Url = weatherDbApi };
+var weatherDataService = new WeatherDataService(); // { Url = weatherDbApi };
 builder.Services.AddSingleton<IWeatherDataService>(weatherDataService);
 
 
