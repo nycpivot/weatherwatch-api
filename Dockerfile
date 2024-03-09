@@ -1,13 +1,14 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 
 WORKDIR /src
-COPY WeatherWatch.Web.sln .
-COPY WeatherWatch.Web/*.csproj ./WeatherWatch.Web/
-COPY WeatherWatch.Application/*.csproj ./WeatherWatch.Application/
+COPY WeatherWatch.Api.sln .
+COPY WeatherWatch.Api/*.csproj ./WeatherWatch.Api/
+COPY WeatherWatch.Domain/*.csproj ./WeatherWatch.Domain/
+COPY WeatherBit.Domain/*.csproj ./WeatherBit.Domain/
 RUN dotnet restore
 
 COPY . .
-RUN dotnet publish WeatherWatch.Web.sln -c release -o /app
+RUN dotnet publish WeatherWatch.Api.sln -c release -o /app
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 
@@ -16,4 +17,4 @@ COPY --from=build /app .
 
 EXPOSE 80
 
-ENTRYPOINT ["dotnet", "WeatherWatch.Web.dll"]
+ENTRYPOINT ["dotnet", "WeatherWatch.Api.dll"]

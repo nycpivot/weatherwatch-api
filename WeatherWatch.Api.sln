@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherWatch.Api", "Weather
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{85A92453-131E-4E4C-AD03-C37F26C41495}"
 	ProjectSection(SolutionItems) = preProject
-		..\weatherwatch-web\Dockerfile = ..\weatherwatch-web\Dockerfile
+		Dockerfile. = Dockerfile.
 	EndProjectSection
 EndProject
 Global
