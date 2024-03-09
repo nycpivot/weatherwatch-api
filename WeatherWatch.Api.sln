@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherBit.Domain", "WeatherBit.Domain\WeatherBit.Domain.csproj", "{43F220B5-37CD-4D3A-9CE6-2439233A2027}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherWatch.Domain", "WeatherWatch.Domain\WeatherWatch.Domain.csproj", "{D6500428-318E-4A07-8100-159CCC7F1F79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherWatch.Api", "WeatherWatch.Api\WeatherWatch.Api.csproj", "{6CD00AA8-32A4-475D-84FE-E59AE3E6F654}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{85A92453-131E-4E4C-AD03-C37F26C41495}"
+	ProjectSection(SolutionItems) = preProject
+		..\weatherwatch-web\Dockerfile = ..\weatherwatch-web\Dockerfile
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{43F220B5-37CD-4D3A-9CE6-2439233A2027}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43F220B5-37CD-4D3A-9CE6-2439233A2027}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43F220B5-37CD-4D3A-9CE6-2439233A2027}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43F220B5-37CD-4D3A-9CE6-2439233A2027}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6500428-318E-4A07-8100-159CCC7F1F79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6500428-318E-4A07-8100-159CCC7F1F79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6500428-318E-4A07-8100-159CCC7F1F79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6500428-318E-4A07-8100-159CCC7F1F79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CD00AA8-32A4-475D-84FE-E59AE3E6F654}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CD00AA8-32A4-475D-84FE-E59AE3E6F654}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CD00AA8-32A4-475D-84FE-E59AE3E6F654}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CD00AA8-32A4-475D-84FE-E59AE3E6F654}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A53F26C8-1DDA-469F-8601-336B641015C5}
+	EndGlobalSection
+EndGlobal
