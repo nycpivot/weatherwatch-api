@@ -1,3 +1,4 @@
+using Dapr.Client;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -20,6 +21,7 @@ namespace WeatherWatch.Api.Controllers
     {
         private readonly IWeatherBitService weatherBitService;
         private readonly IWeatherDataService weatherDataService;
+        private readonly DaprClient daprClient;
         private readonly ILogger<ForecastController> logger;
 
         //private static readonly Counter TempsBelowZero = Metrics
@@ -37,10 +39,12 @@ namespace WeatherWatch.Api.Controllers
         public ForecastController(
             IWeatherBitService weatherBitService, 
             IWeatherDataService weatherDataService,
+            DaprClient daprClient,
             ILogger<ForecastController> logger)
         {
             this.weatherBitService = weatherBitService;
             this.weatherDataService = weatherDataService;
+            this.daprClient = daprClient;
             this.logger = logger;
         }
 
@@ -99,8 +103,8 @@ namespace WeatherWatch.Api.Controllers
                 }
             }
 
-            var min = Convert.ToDouble(weatherInfo.Forecast.Min(t => t.TemperatureC));
-            var max = Convert.ToDouble(weatherInfo.Forecast.Max(t => t.TemperatureC));
+            var min = Convert.ToDouble(weatherInfo.Forecast.Min(t => t.TemperatureF));
+            var max = Convert.ToDouble(weatherInfo.Forecast.Max(t => t.TemperatureF));
             var tags = new Dictionary<string, string>();
 
             tags.Add("DeploymentType", "Environment");
@@ -141,6 +145,13 @@ namespace WeatherWatch.Api.Controllers
                 //        new KeyValuePair<string, string>("zipcode", zipCode),
                 //        new KeyValuePair<string, string>("http.method", "GET")), null);
             }
+
+            // send to message broker through dapr
+            var coldest = weatherInfo.Forecast.Single(f => f.TemperatureF == min);
+            var hottest = weatherInfo.Forecast.Single(f => f.TemperatureF == max);
+
+            daprClient.PublishEventAsync("pubsub", "coldestday", coldest);
+            daprClient.PublishEventAsync("pubsub", "hottestday", hottest);
 
             return weatherInfo;
         }
