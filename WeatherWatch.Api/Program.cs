@@ -12,8 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 //var weatherDbApi = Environment.GetEnvironmentVariable("WEATHER_DB_API") ?? String.Empty;
 
-var weatherBitUrl = Environment.GetEnvironmentVariable("weather-bit-api-url");
-var weatherBitKey = Environment.GetEnvironmentVariable("weather-bit-api-key");
+var weatherBitUrl = Environment.GetEnvironmentVariable("WEATHER_BIT_API_URL");
+var weatherBitKey = Environment.GetEnvironmentVariable("WEATHER_BIT_API_KEY");
 //var wavefrontUrl = System.IO.File.ReadAllText(Path.Combine(serviceBindings, "wavefront-api-resource-claim", "host"));
 //var wavefrontToken = System.IO.File.ReadAllText(Path.Combine(serviceBindings, "wavefront-api-resource-claim", "token"));
 
