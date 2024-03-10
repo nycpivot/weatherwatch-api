@@ -3,12 +3,14 @@ using Newtonsoft.Json;
 
 //using Newtonsoft.Json;
 //using Prometheus;
-using System.Collections.Immutable;
 using System.Net;
 using WeatherBit.Domain;
+
+//using WeatherBit.Domain;
 using WeatherBit.Domain.Interfaces;
 using WeatherWatch.Api.Interfaces;
 using WeatherWatch.Domain;
+//using WeatherWatch.Domain;
 
 namespace WeatherWatch.Api.Controllers
 {
@@ -80,15 +82,15 @@ namespace WeatherWatch.Api.Controllers
                         weatherInfo.Longitude = weatherBitInfo.lon;
                         weatherInfo.TimeZone = weatherBitInfo.timezone;
 
-                        //foreach (var weatherBitForecast in weatherBitInfo.data)
-                        //{
-                        //    var weatherForecast = new WeatherForecast();
-                        //    weatherForecast.Date = Convert.ToDateTime(weatherBitForecast.datetime);
-                        //    weatherForecast.TemperatureC = Convert.ToSingle(weatherBitForecast.temp);
-                        //    weatherForecast.Description = weatherBitForecast.weather.description;
+                        foreach (var weatherBitForecast in weatherBitInfo.data)
+                        {
+                            var weatherForecast = new WeatherForecast();
+                            weatherForecast.Date = Convert.ToDateTime(weatherBitForecast.datetime);
+                            weatherForecast.TemperatureC = Convert.ToSingle(weatherBitForecast.temp);
+                            weatherForecast.Description = weatherBitForecast.weather.description;
 
-                        //    weatherInfo.Forecast.Add(weatherForecast);
-                        //}
+                            weatherInfo.Forecast.Add(weatherForecast);
+                        }
                     }
                     else if (response.StatusCode == HttpStatusCode.TooManyRequests) // if free limits are exceeded, return random
                     {
