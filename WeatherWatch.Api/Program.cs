@@ -37,8 +37,7 @@ builder.Services.AddSingleton<IWeatherDataService>(weatherDataService);
 // add dapr client
 builder.Services.AddDaprClient(builder => builder
     .UseHttpEndpoint("http://localhost:3500")
-    .UseGrpcEndpoint("http://localhost:50001")
-    .Build());
+    .UseGrpcEndpoint("http://localhost:50001"));
 
 
 builder.Services.AddControllers();
