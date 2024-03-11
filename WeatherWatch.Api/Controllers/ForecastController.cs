@@ -147,8 +147,8 @@ namespace WeatherWatch.Api.Controllers
             }
 
             // send to message broker through dapr
-            var coldest = weatherInfo.Forecast.Single(f => f.TemperatureF == min);
-            var hottest = weatherInfo.Forecast.Single(f => f.TemperatureF == max);
+            var coldest = weatherInfo.Forecast.First(f => f.TemperatureF == min);
+            var hottest = weatherInfo.Forecast.First(f => f.TemperatureF == max);
 
             daprClient.PublishEventAsync<WeatherForecast>("extreme-temps", "coldestday", coldest);
             daprClient.PublishEventAsync<WeatherForecast>("extreme-temps", "hottestday", hottest);
