@@ -34,12 +34,6 @@ builder.Services.AddSingleton<IWeatherBitService>(weatherBitService);
 var weatherDataService = new WeatherDataService(); // { Url = weatherDbApi };
 builder.Services.AddSingleton<IWeatherDataService>(weatherDataService);
 
-// add dapr client
-builder.Services.AddDaprClient(builder => builder
-    .UseHttpEndpoint("http://localhost:3500")
-    .UseGrpcEndpoint("http://localhost:50001"));
-
-
 builder.Services.AddControllers();
 
 var app = builder.Build();

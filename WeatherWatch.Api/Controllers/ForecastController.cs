@@ -1,4 +1,3 @@
-using Dapr.Client;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -21,7 +20,6 @@ namespace WeatherWatch.Api.Controllers
     {
         private readonly IWeatherBitService weatherBitService;
         private readonly IWeatherDataService weatherDataService;
-        private readonly DaprClient daprClient;
         private readonly ILogger<ForecastController> logger;
 
         //private static readonly Counter TempsBelowZero = Metrics
@@ -39,12 +37,10 @@ namespace WeatherWatch.Api.Controllers
         public ForecastController(
             IWeatherBitService weatherBitService, 
             IWeatherDataService weatherDataService,
-            DaprClient daprClient,
             ILogger<ForecastController> logger)
         {
             this.weatherBitService = weatherBitService;
             this.weatherDataService = weatherDataService;
-            this.daprClient = daprClient;
             this.logger = logger;
         }
 
@@ -149,9 +145,6 @@ namespace WeatherWatch.Api.Controllers
             // send to message broker through dapr
             var coldest = weatherInfo.Forecast.First(f => f.TemperatureF == min);
             var hottest = weatherInfo.Forecast.First(f => f.TemperatureF == max);
-
-            daprClient.PublishEventAsync<WeatherForecast>("extreme-temps", "coldestday", coldest);
-            daprClient.PublishEventAsync<WeatherForecast>("extreme-temps", "hottestday", hottest);
 
             return weatherInfo;
         }
