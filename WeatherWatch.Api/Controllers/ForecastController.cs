@@ -150,8 +150,8 @@ namespace WeatherWatch.Api.Controllers
             var coldest = weatherInfo.Forecast.Single(f => f.TemperatureF == min);
             var hottest = weatherInfo.Forecast.Single(f => f.TemperatureF == max);
 
-            daprClient.PublishEventAsync("pubsub", "coldestday", coldest);
-            daprClient.PublishEventAsync("pubsub", "hottestday", hottest);
+            daprClient.PublishEventAsync("pubsubby", "coldestday", coldest);
+            daprClient.PublishEventAsync("pubnub", "hottestday", hottest);
 
             return weatherInfo;
         }
