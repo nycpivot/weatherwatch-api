@@ -32,6 +32,10 @@ builder.Services.AddSingleton<IWeatherBitService>(weatherBitService);
 //var wfSender = new WavefrontDirectIngestionClient.Builder(wavefrontUrl, wavefrontToken).Build();
 //builder.Services.AddSingleton<IWavefrontSender>(wfSender);
 
+Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+Console.WriteLine(weatherDataApi);
+Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+
 // setup weather data service
 var weatherDataService = new WeatherDataService( { Url = weatherDataApi } ); // { Url = weatherDbApi };
 builder.Services.AddSingleton<IWeatherDataService>(weatherDataService);
