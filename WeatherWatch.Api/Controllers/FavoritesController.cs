@@ -81,6 +81,10 @@ namespace WeatherWatch.Api.Controllers
         {
             var favorites = new List<Favorite>();
 
+            Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            Console.WriteLine(weatherDataApi);
+            Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+
             //var start = DateTimeUtils.UnixTimeMilliseconds(DateTime.UtcNow);
             //Thread.Sleep(100);
             //var end = DateTimeUtils.UnixTimeMilliseconds(DateTime.UtcNow);
@@ -106,7 +110,7 @@ namespace WeatherWatch.Api.Controllers
 
                 using (var httpClient = new HttpClient(handler))
                 {
-                    httpClient.BaseAddress = new Uri(this.weatherDataService.Url);
+                    httpClient.BaseAddress = new Uri("http://data.weatherwatch.live"); //this.weatherDataService.Url);
                     //httpClient.DefaultRequestHeaders.Add("X-TraceId", traceId.ToString());
                     //httpClient.DefaultRequestHeaders.Add("X-SpanId", spanId.ToString());
 
