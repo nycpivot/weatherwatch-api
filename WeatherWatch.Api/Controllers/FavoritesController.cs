@@ -81,10 +81,6 @@ namespace WeatherWatch.Api.Controllers
         {
             var favorites = new List<Favorite>();
 
-            Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-            Console.WriteLine(weatherDataApi);
-            Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-
             //var start = DateTimeUtils.UnixTimeMilliseconds(DateTime.UtcNow);
             //Thread.Sleep(100);
             //var end = DateTimeUtils.UnixTimeMilliseconds(DateTime.UtcNow);
