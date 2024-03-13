@@ -185,16 +185,16 @@ namespace WeatherWatch.Api.Controllers
             weatherInfo.StateCode = "CA";
             weatherInfo.CountryCode = "US";
 
-            //var forecast = Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            //{
-            //    Date = DateTime.Now.AddDays(index),
-            //    TemperatureC = Random.Shared.Next(-20, 55),
-            //    Description = Summaries[Random.Shared.Next(Summaries.Length)]
-            //})
-            //.ToArray();
+            var forecast = Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            {
+               Date = DateTime.Now.AddDays(index),
+               TemperatureC = Random.Shared.Next(-20, 55),
+               Description = Summaries[Random.Shared.Next(Summaries.Length)]
+            })
+            .ToArray();
 
-            //var belowZero = forecast.Count(f => f.TemperatureF < 0);
-            //var above100 = forecast.Count(f => f.TemperatureF > 100);
+            // var belowZero = forecast.Count(f => f.TemperatureF < 0);
+            // var above100 = forecast.Count(f => f.TemperatureF > 100);
 
             //TempsBelowZero.Inc(belowZero);
             //TempsAbove100.Inc(above100);
