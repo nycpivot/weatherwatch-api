@@ -110,7 +110,8 @@ namespace WeatherWatch.Api.Controllers
                     //httpClient.DefaultRequestHeaders.Add("X-TraceId", traceId.ToString());
                     //httpClient.DefaultRequestHeaders.Add("X-SpanId", spanId.ToString());
 
-                    var result = httpClient.GetAsync($"favorites/{zipCode}").Result;
+                    //var result = httpClient.GetAsync($"favorites/{zipCode}").Result;
+                    var result = httpClient.GetAsync($"favorites?zipCode?{zipCode}");
                 }
             }
         }
