@@ -17,7 +17,7 @@ var weatherBitKey = Environment.GetEnvironmentVariable("WEATHER_BIT_API_KEY");
 //var wavefrontUrl = System.IO.File.ReadAllText(Path.Combine(serviceBindings, "wavefront-api-resource-claim", "host"));
 //var wavefrontToken = System.IO.File.ReadAllText(Path.Combine(serviceBindings, "wavefront-api-resource-claim", "token"));
 
-var weatherDataApi = Environment.GetEnvironmentVariable("WEATHER_DATA_API_URL");
+var weatherDataApi = "http://data.weatherwatch.live"; // Environment.GetEnvironmentVariable("WEATHER_DATA_API_URL");
 
 // setup weather bit service
 var weatherBitService = new WeatherBitService()
