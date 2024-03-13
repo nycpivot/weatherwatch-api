@@ -106,6 +106,7 @@ namespace WeatherWatch.Api.Controllers
 
                 using (var httpClient = new HttpClient(handler))
                 {
+                    Console.WriteLine(this.weatherDataService.Url);
                     httpClient.BaseAddress = new Uri(this.weatherDataService.Url);
                     //httpClient.DefaultRequestHeaders.Add("X-TraceId", traceId.ToString());
                     //httpClient.DefaultRequestHeaders.Add("X-SpanId", spanId.ToString());
