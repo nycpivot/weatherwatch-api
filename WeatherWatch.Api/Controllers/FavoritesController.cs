@@ -113,6 +113,8 @@ namespace WeatherWatch.Api.Controllers
 
                     //var result = httpClient.GetAsync($"favorites/{zipCode}").Result;
                     var result = httpClient.GetAsync($"favorites/{zipCode}");
+
+                    Console.WriteLine(result);
                 }
             }
 
