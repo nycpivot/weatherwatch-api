@@ -12,12 +12,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 //var weatherDbApi = Environment.GetEnvironmentVariable("WEATHER_DB_API") ?? String.Empty;
 
-var weatherBitUrl = Environment.GetEnvironmentVariable("WEATHER_BIT_API_URL");
-var weatherBitKey = Environment.GetEnvironmentVariable("WEATHER_BIT_API_KEY");
+var weatherBitUrl = Environment.GetEnvironmentVariable("WEATHER_BIT_API_URL") ?? String.Empty;
+var weatherBitKey = Environment.GetEnvironmentVariable("WEATHER_BIT_API_KEY") ?? String.Empty;
 //var wavefrontUrl = System.IO.File.ReadAllText(Path.Combine(serviceBindings, "wavefront-api-resource-claim", "host"));
 //var wavefrontToken = System.IO.File.ReadAllText(Path.Combine(serviceBindings, "wavefront-api-resource-claim", "token"));
 
-var weatherDataApi = "http://data.weatherwatch.live"; // Environment.GetEnvironmentVariable("WEATHER_DATA_API_URL");
+var weatherDataApi = Environment.GetEnvironmentVariable("WEATHER_DATA_API_URL") ?? String.Empty;
 
 // setup weather bit service
 var weatherBitService = new WeatherBitService()
@@ -31,10 +31,6 @@ builder.Services.AddSingleton<IWeatherBitService>(weatherBitService);
 // setup wavefront
 //var wfSender = new WavefrontDirectIngestionClient.Builder(wavefrontUrl, wavefrontToken).Build();
 //builder.Services.AddSingleton<IWavefrontSender>(wfSender);
-
-Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-Console.WriteLine(weatherDataApi);
-Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
 // setup weather data service
 var weatherDataService = new WeatherDataService() { Url = weatherDataApi }; // { Url = weatherDbApi };
