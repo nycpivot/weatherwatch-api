@@ -65,41 +65,41 @@ namespace WeatherWatch.Api.Controllers
 
                 using (var httpClient = new HttpClient(handler))
                 {
-                    //httpClient.BaseAddress = new Uri(this.weatherBitService.Url);
+                    httpClient.BaseAddress = new Uri(this.weatherBitService.Url);
 
                     var key = this.weatherBitService.Key;
 
-                    // var response = httpClient.GetAsync($"forecast/daily?postal_code={zipCode}&key={key}").Result;
-                    // if (response.StatusCode == HttpStatusCode.OK)
-                    // {
-                    //     var content = response.Content.ReadAsStringAsync().Result;
+                    var response = httpClient.GetAsync($"forecast/daily?postal_code={zipCode}&key={key}").Result;
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        var content = response.Content.ReadAsStringAsync().Result;
 
-                    //     var serializerSettings = new JsonSerializerSettings();
-                    //     serializerSettings.MissingMemberHandling = MissingMemberHandling.Ignore;
+                        var serializerSettings = new JsonSerializerSettings();
+                        serializerSettings.MissingMemberHandling = MissingMemberHandling.Ignore;
 
-                    //     var weatherBitInfo = JsonConvert.DeserializeObject<WeatherBitInfo>(content, serializerSettings);
+                        var weatherBitInfo = JsonConvert.DeserializeObject<WeatherBitInfo>(content, serializerSettings);
 
-                    //     weatherInfo.CityName = weatherBitInfo.city_name;
-                    //     weatherInfo.StateCode = weatherBitInfo.state_code;
-                    //     weatherInfo.CountryCode = weatherBitInfo.country_code;
-                    //     weatherInfo.Latitude = weatherBitInfo.lat;
-                    //     weatherInfo.Longitude = weatherBitInfo.lon;
-                    //     weatherInfo.TimeZone = weatherBitInfo.timezone;
+                        weatherInfo.CityName = weatherBitInfo.city_name;
+                        weatherInfo.StateCode = weatherBitInfo.state_code;
+                        weatherInfo.CountryCode = weatherBitInfo.country_code;
+                        weatherInfo.Latitude = weatherBitInfo.lat;
+                        weatherInfo.Longitude = weatherBitInfo.lon;
+                        weatherInfo.TimeZone = weatherBitInfo.timezone;
 
-                    //     foreach (var weatherBitForecast in weatherBitInfo.data)
-                    //     {
-                    //         var weatherForecast = new WeatherForecast();
-                    //         weatherForecast.Date = Convert.ToDateTime(weatherBitForecast.datetime);
-                    //         weatherForecast.TemperatureC = Convert.ToSingle(weatherBitForecast.temp);
-                    //         weatherForecast.Description = weatherBitForecast.weather.description;
+                        foreach (var weatherBitForecast in weatherBitInfo.data)
+                        {
+                            var weatherForecast = new WeatherForecast();
+                            weatherForecast.Date = Convert.ToDateTime(weatherBitForecast.datetime);
+                            weatherForecast.TemperatureC = Convert.ToSingle(weatherBitForecast.temp);
+                            weatherForecast.Description = weatherBitForecast.weather.description;
 
-                    //         weatherInfo.Forecast.Add(weatherForecast);
-                    //     }
-                    // }
-                    // else if (response.StatusCode == HttpStatusCode.TooManyRequests) // if free limits are exceeded, return random
-                    // {
+                            weatherInfo.Forecast.Add(weatherForecast);
+                        }
+                    }
+                    else if (response.StatusCode == HttpStatusCode.TooManyRequests) // if free limits are exceeded, return random
+                    {
                         weatherInfo = GetRandom();
-                    //}
+                    }
                 }
             }
 
@@ -199,7 +199,7 @@ namespace WeatherWatch.Api.Controllers
             //TempsBelowZero.Inc(belowZero);
             //TempsAbove100.Inc(above100);
 
-            //weatherInfo.Forecast = forecast;
+            weatherInfo.Forecast = forecast;
 
             return weatherInfo;
         }
