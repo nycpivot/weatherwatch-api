@@ -77,7 +77,7 @@ namespace WeatherWatch.Api.Controllers
 
         [HttpGet]
         [Route("{zipCode}")]
-        public void Save(string zipCode)
+        public string Save(string zipCode)
         {
             var favorites = new List<Favorite>();
 
@@ -114,6 +114,8 @@ namespace WeatherWatch.Api.Controllers
                     var result = httpClient.GetAsync($"favorites/{zipCode}");
                 }
             }
+
+            return zipCode;
         }
     }
 }
