@@ -37,7 +37,7 @@ Console.WriteLine(weatherDataApi);
 Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
 // setup weather data service
-var weatherDataService = new WeatherDataService( { Url = weatherDataApi } ); // { Url = weatherDbApi };
+var weatherDataService = new WeatherDataService() { Url = weatherDataApi }; // { Url = weatherDbApi };
 builder.Services.AddSingleton<IWeatherDataService>(weatherDataService);
 
 // add dapr client
