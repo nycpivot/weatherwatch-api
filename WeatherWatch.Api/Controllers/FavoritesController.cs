@@ -106,16 +106,12 @@ namespace WeatherWatch.Api.Controllers
 
                 using (var httpClient = new HttpClient(handler))
                 {
-                    Console.WriteLine(this.weatherDataService.Url);
                     httpClient.BaseAddress = new Uri(this.weatherDataService.Url);
                     //httpClient.DefaultRequestHeaders.Add("X-TraceId", traceId.ToString());
                     //httpClient.DefaultRequestHeaders.Add("X-SpanId", spanId.ToString());
 
                     //var result = httpClient.GetAsync($"favorites/{zipCode}").Result;
                     var result = httpClient.GetAsync($"favorites/{zipCode}").Result;
-
-                    Console.WriteLine("WOOHOO");
-                    Console.WriteLine(result.StatusCode);
                 }
             }
 
